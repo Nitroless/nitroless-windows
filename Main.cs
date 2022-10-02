@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 using System.Net;
-using System.Reflection;
 
 namespace Nitroless
 {
@@ -24,7 +17,7 @@ namespace Nitroless
                 File.Create("repos.json").Close();
                 File.AppendAllText("repos.json", "[]");
             }
-            this.BackColor = Color.FromArgb(60, 63, 65);
+            // this.BackColor = Color.FromArgb(60, 63, 65);
             // this.TopMost = true;
         }
 
@@ -55,25 +48,32 @@ namespace Nitroless
             trayIcon.ContextMenuStrip.Items.Add("Show", null, Main_Show);
             trayIcon.ContextMenuStrip.Items.Add("Hide", null, Main_Hide);
             trayIcon.ContextMenuStrip.Items.Add("Add Repo", null, Main_AddRepo);
-            trayIcon.ContextMenuStrip.Items.Add("Delete Repo", null, Main_DeleteRepo);
+            trayIcon.ContextMenuStrip.Items.Add("Remove Repo", null, Main_RemoveRepo);
             trayIcon.ContextMenuStrip.Items.Add("Exit", null, Main_Close);
         }
+
         private void Main_Show(object sender, EventArgs e)
         {
             this.Show();
             this.WindowState = FormWindowState.Normal;
             this.Activate();
         }
+
         private void Main_Hide(object sender, EventArgs e)
         {
             this.Hide();
         }
+
         private void Main_AddRepo(object sender, EventArgs e)
         {
+            AddRepo addRepoForm = new AddRepo();
+            addRepoForm.Show();
         }
 
-        private void Main_DeleteRepo(object sender, EventArgs e)
+        private void Main_RemoveRepo(object sender, EventArgs e)
         {
+            RemoveRepo removeRepoForm = new RemoveRepo();
+            removeRepoForm.Show();
         }
 
         private void Main_Close(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace Nitroless
                     repoLabel.AutoSize = true;
                     repoLabel.Font = new Font(repoLabel.Font.Name, 18);
                     repoLabel.Padding = new Padding(0);
-                    repoLabel.ForeColor = Color.FromArgb(220, 220, 220);
+                    // repoLabel.ForeColor = Color.FromArgb(220, 220, 220);
                     mainPanel.Controls.Add(repoLabel);
 
                     x = 0;

@@ -58,6 +58,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main";
+            this.ShowInTaskbar = false;
             this.Text = "Nitroless";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Closing);
             this.Load += new System.EventHandler(this.Main_Load);
