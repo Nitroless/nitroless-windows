@@ -15,7 +15,7 @@ namespace Nitroless
             if (!File.Exists("repos.json"))
             {
                 File.Create("repos.json").Close();
-                File.AppendAllText("repos.json", "[]");
+                File.WriteAllText("repos.json", "[]");
             }
             // this.BackColor = Color.FromArgb(60, 63, 65);
             // this.TopMost = true;
