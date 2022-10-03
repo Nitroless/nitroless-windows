@@ -15,7 +15,7 @@ namespace Nitroless
             if (!File.Exists("repos.json"))
             {
                 File.Create("repos.json").Close();
-                File.WriteAllText("repos.json", "[]");
+                File.WriteAllText("repos.json", "[\"https://lillieh001.github.io/nitroless/\"]");
             }
             // this.BackColor = Color.FromArgb(60, 63, 65);
             // this.TopMost = true;
@@ -49,6 +49,7 @@ namespace Nitroless
             trayIcon.ContextMenuStrip.Items.Add("Hide", null, Main_Hide);
             trayIcon.ContextMenuStrip.Items.Add("Add Repo", null, Main_AddRepo);
             trayIcon.ContextMenuStrip.Items.Add("Remove Repo", null, Main_RemoveRepo);
+            trayIcon.ContextMenuStrip.Items.Add("Settings", null, Main_Settings);
             trayIcon.ContextMenuStrip.Items.Add("Exit", null, Main_Close);
         }
 
@@ -74,6 +75,12 @@ namespace Nitroless
         {
             RemoveRepo removeRepoForm = new RemoveRepo();
             removeRepoForm.Show();
+        }
+
+        private void Main_Settings(object sender, EventArgs e)
+        {
+            Settings settingsForm = new Settings();
+            settingsForm.Show();
         }
 
         private void Main_Close(object sender, EventArgs e)
